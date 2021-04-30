@@ -4,7 +4,7 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Chat from "./pages/Chat";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { auth } from "./services/firebase";
 import Loading from "./component/Loading";
 
@@ -42,7 +42,7 @@ function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [loading, setLoading] = useState(true);
 
-  useState(() => {
+  useEffect(() => {
     auth().onAuthStateChanged((user) => {
       if (user) {
         setIsAuthenticated(true);
